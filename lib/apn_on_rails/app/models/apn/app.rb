@@ -32,7 +32,7 @@ class APN::App < APN::Base
       app.send_notifications
     end
     if !configatron.apn.cert.blank?
-      global_cert = File.read(configatron.apn.cert)
+      global_cert = File.read(configatron.apn.cert.gsub("rails_root/",""))
       send_notifications_for_cert(global_cert, nil)
     end
   end
